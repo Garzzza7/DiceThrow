@@ -1,5 +1,6 @@
 package com.example.dicethrow
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.hardware.Sensor
 import android.hardware.SensorEvent
@@ -10,7 +11,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import java.util.*
 import kotlin.math.sqrt
 
@@ -24,9 +25,11 @@ class MainActivity : AppCompatActivity() {
 
     var last_button: Int=0
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
 
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
@@ -41,7 +44,6 @@ class MainActivity : AppCompatActivity() {
         val dice3_Button = findViewById<Button>(R.id.three_dice_button)
         val clear_Button = findViewById<Button>(R.id.clear_button)
 
-
         val number1=findViewById<TextView>(R.id.dice1)
         val number2=findViewById<TextView>(R.id.dice2)
         val number3=findViewById<TextView>(R.id.dice3)
@@ -49,6 +51,13 @@ class MainActivity : AppCompatActivity() {
         val image1=findViewById<ImageView>(R.id.image_1)
         val image2=findViewById<ImageView>(R.id.image_2)
         val image3=findViewById<ImageView>(R.id.image_3)
+
+        val equals1=findViewById<ImageView>(R.id.equals1)
+        val equals2=findViewById<ImageView>(R.id.equals2)
+        val equals3=findViewById<ImageView>(R.id.equals3)
+
+        val notificaion=findViewById<TextView>(R.id.notification)
+        notificaion.setText("Pick a number of dice!")
 
         dice1_Button.setOnClickListener{
             last_button=1
@@ -58,6 +67,12 @@ class MainActivity : AppCompatActivity() {
             image1.setImageResource(R.drawable.background)
             image2.setImageResource(R.drawable.background)
             image3.setImageResource(R.drawable.background)
+
+            notificaion.setText("Shake Your Phone!")
+
+            equals1.setImageResource(R.drawable.background)
+            equals2.setImageResource(R.drawable.background)
+            equals3.setImageResource(R.drawable.background)
         }
         dice2_Button.setOnClickListener{
             last_button=2
@@ -67,6 +82,12 @@ class MainActivity : AppCompatActivity() {
             image1.setImageResource(R.drawable.background)
             image2.setImageResource(R.drawable.background)
             image3.setImageResource(R.drawable.background)
+
+            notificaion.setText("Shake Your Phone!")
+
+            equals1.setImageResource(R.drawable.background)
+            equals2.setImageResource(R.drawable.background)
+            equals3.setImageResource(R.drawable.background)
         }
         dice3_Button.setOnClickListener{
             last_button=3
@@ -76,6 +97,12 @@ class MainActivity : AppCompatActivity() {
             image1.setImageResource(R.drawable.background)
             image2.setImageResource(R.drawable.background)
             image3.setImageResource(R.drawable.background)
+
+            notificaion.setText("Shake Your Phone!")
+
+            equals1.setImageResource(R.drawable.background)
+            equals2.setImageResource(R.drawable.background)
+            equals3.setImageResource(R.drawable.background)
         }
         clear_Button.setOnClickListener{
             last_button=0
@@ -85,6 +112,12 @@ class MainActivity : AppCompatActivity() {
             image1.setImageResource(R.drawable.background)
             image2.setImageResource(R.drawable.background)
             image3.setImageResource(R.drawable.background)
+
+            notificaion.setText("Pick a number of dice!")
+
+            equals1.setImageResource(R.drawable.background)
+            equals2.setImageResource(R.drawable.background)
+            equals3.setImageResource(R.drawable.background)
         }
     }
     private val sensorListener: SensorEventListener = object : SensorEventListener {
@@ -125,6 +158,14 @@ class MainActivity : AppCompatActivity() {
         val image1=findViewById<ImageView>(R.id.image_1)
         val image2=findViewById<ImageView>(R.id.image_2)
         val image3=findViewById<ImageView>(R.id.image_3)
+
+        val notificaion=findViewById<TextView>(R.id.notification)
+        notificaion.setText("")
+
+        val equals1=findViewById<ImageView>(R.id.equals1)
+        val equals2=findViewById<ImageView>(R.id.equals2)
+        val equals3=findViewById<ImageView>(R.id.equals3)
+
         when (diceRoll){
             1->image1.setImageResource(R.drawable.dice_1)
             2->image1.setImageResource(R.drawable.dice_2)
@@ -135,6 +176,10 @@ class MainActivity : AppCompatActivity() {
         }
         image2.setImageResource(R.drawable.background)
         image3.setImageResource(R.drawable.background)
+
+        equals1.setImageResource(R.drawable.equal)
+        equals2.setImageResource(R.drawable.background)
+        equals3.setImageResource(R.drawable.background)
 
         val number1=findViewById<TextView>(R.id.dice1)
         val number2=findViewById<TextView>(R.id.dice2)
@@ -149,6 +194,15 @@ class MainActivity : AppCompatActivity() {
         val image1=findViewById<ImageView>(R.id.image_1)
         val image2=findViewById<ImageView>(R.id.image_2)
         val image3=findViewById<ImageView>(R.id.image_3)
+
+        val notificaion=findViewById<TextView>(R.id.notification)
+        notificaion.setText("")
+
+        val equals1=findViewById<ImageView>(R.id.equals1)
+        val equals2=findViewById<ImageView>(R.id.equals2)
+        val equals3=findViewById<ImageView>(R.id.equals3)
+
+
         when (diceRoll){
             1->image1.setImageResource(R.drawable.dice_1)
             2->image1.setImageResource(R.drawable.dice_2)
@@ -166,7 +220,11 @@ class MainActivity : AppCompatActivity() {
             6->image2.setImageResource(R.drawable.dice_6)
         }
         image3.setImageResource(R.drawable.background)
-        // Update the screen with the dice roll
+
+        equals1.setImageResource(R.drawable.equal)
+        equals2.setImageResource(R.drawable.equal)
+        equals3.setImageResource(R.drawable.background)
+
         val number1=findViewById<TextView>(R.id.dice1)
         val number2=findViewById<TextView>(R.id.dice2)
         val number3=findViewById<TextView>(R.id.dice3)
@@ -181,6 +239,14 @@ class MainActivity : AppCompatActivity() {
         val image1=findViewById<ImageView>(R.id.image_1)
         val image2=findViewById<ImageView>(R.id.image_2)
         val image3=findViewById<ImageView>(R.id.image_3)
+
+        val notificaion=findViewById<TextView>(R.id.notification)
+        notificaion.setText("")
+
+        val equals1=findViewById<ImageView>(R.id.equals1)
+        val equals2=findViewById<ImageView>(R.id.equals2)
+        val equals3=findViewById<ImageView>(R.id.equals3)
+
         when (diceRoll){
             1->image1.setImageResource(R.drawable.dice_1)
             2->image1.setImageResource(R.drawable.dice_2)
@@ -205,6 +271,9 @@ class MainActivity : AppCompatActivity() {
             5->image3.setImageResource(R.drawable.dice_5)
             6->image3.setImageResource(R.drawable.dice_6)
         }
+        equals1.setImageResource(R.drawable.equal)
+        equals2.setImageResource(R.drawable.equal)
+        equals3.setImageResource(R.drawable.equal)
         val number1=findViewById<TextView>(R.id.dice1)
         val number2=findViewById<TextView>(R.id.dice2)
         val number3=findViewById<TextView>(R.id.dice3)
